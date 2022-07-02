@@ -2,7 +2,7 @@ import React from 'react'
 import { Context } from '../Context'
 
 export default function Item() {
-  const {storeItems, storeCategories, addToCart, removeFromCart, cartItems} = React.useContext(Context)
+  const {storeItems, storeCategories, addToCart, removeFromCart, cartItems, sort} = React.useContext(Context)
   const [filterCategory, setFilterCategory] = React.useState('all')
 
   const categoryOptions = storeCategories.reduce((count, currentValue) => {
@@ -63,7 +63,14 @@ export default function Item() {
 
   return (
     <div>
-      <select onChange={(e) => handleChange(e)}>
+      <select onChange={(e) => sort(e)} defaultValue='' className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-md px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+        <option value='' disabled hidden>Sort By</option>
+        <option value='lowToHigh'>Price: Low to High</option>
+        <option value='highToLow'>Price: High to Low</option>
+        <option value='a-z'>Alphabetical (A-Z)</option>
+        <option value='z-a'>Alphabetical (Z-A)</option>
+      </select>
+      <select onChange={(e) => handleChange(e)} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-md px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" >
         <option value='all'>All categories ({storeItems.length})</option>
         {selectHtml}
       </select>

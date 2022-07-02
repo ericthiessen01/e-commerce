@@ -56,13 +56,42 @@ function ContextProvider({children}) {
         )
     }
 
+    function sort(e) {
+        if(e.target.value === 'lowToHigh') {
+            setStoreItems(prev => {
+                return ([...prev].sort((a, b) => {return a.price - b.price}))
+            })
+        } if(e.target.value === 'highToLow') {
+            setStoreItems(prev => {
+                return ([...prev].sort((a, b) => {return b.price - a.price}))
+            })
+        } if(e.target.value === 'a-z') {
+            setStoreItems(prev => {
+                return ([...prev].sort((a, b) => {
+                    const sa = a.title.toLowerCase()
+                    const sb = b.title.toLowerCase()
+                    return (sa < sb) ? -1 : (sa > sb) ? 1 : 0
+                }))
+            })
+        } if(e.target.value === 'z-a') {
+            setStoreItems(prev => {
+                return ([...prev].sort((a, b) => {
+                    const sa = a.title.toLowerCase()
+                    const sb = b.title.toLowerCase()
+                    return (sa > sb) ? -1 : (sa < sb) ? 1 : 0
+                }))
+            })
+        } 
+    }
+
     return (
         <Context.Provider value={{
             storeItems: storeItems,
             storeCategories: storeCategories,
             addToCart: addToCart,
             removeFromCart: removeFromCart,
-            cartItems: cartItems
+            cartItems: cartItems,
+            sort: sort
         }}>
             {children}
         </Context.Provider>
