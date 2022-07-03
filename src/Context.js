@@ -25,8 +25,6 @@ function ContextProvider({children}) {
         getData()
     }, [])
 
-    console.log(cartItems)
-
     function addToCart(selectedItem) {
         setCartItems(prevItems => {
             if(prevItems.find(item => item.id === selectedItem.id) == null) {

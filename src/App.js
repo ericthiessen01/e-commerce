@@ -10,9 +10,10 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Cart from './pages/Cart'
 
+
 function App() {
   return (
-    <div className="App">
+    <div className="App w-full">
       <Router>
         <Nav />
         <Routes>
