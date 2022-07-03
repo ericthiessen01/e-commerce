@@ -13,7 +13,7 @@ import Cart from './pages/Cart'
 
 function App() {
   return (
-    <div className="App w-full">
+    <div className="App w-full bg-slate-50">
       <Router>
         <Nav />
         <Routes>

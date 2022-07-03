@@ -5,6 +5,7 @@ const Context = React.createContext()
 function ContextProvider({children}) {
     const [storeItems, setStoreItems] = useState([])
     const [storeCategories, setStoreCategories] = useState([])
+    const [loading, setLoading] = useState(false)
     const [cartItems, setCartItems] = useState(() => {
         const cart = localStorage.getItem('cart')
         return cart !== null || undefined
@@ -18,12 +19,18 @@ function ContextProvider({children}) {
             .then(data => {
                 setStoreItems(data)
                 setStoreCategories(data.map(item => item.category))
+                setLoading(false)
             })
     }
 
     useEffect(() => {
+        setLoading(true)
         getData()
     }, [])
+
+    React.useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(cartItems))
+    }, [cartItems])
 
     function addToCart(selectedItem) {
         setCartItems(prevItems => {
@@ -89,7 +96,8 @@ function ContextProvider({children}) {
             addToCart: addToCart,
             removeFromCart: removeFromCart,
             cartItems: cartItems,
-            sort: sort
+            sort: sort,
+            loading: loading
         }}>
             {children}
         </Context.Provider>

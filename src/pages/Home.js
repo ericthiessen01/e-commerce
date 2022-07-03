@@ -1,11 +1,10 @@
 import React from 'react'
 import Item from '../components/Item'
-import { Context } from '../Context'
 
 export default function Home() {
 
   return (
-    <div>
+    <div className='bg-slate-50 min-h-[90vh] h-full'>
       <Item />
     </div>
   )

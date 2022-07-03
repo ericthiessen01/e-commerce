@@ -4,7 +4,7 @@ export default function About() {
   return (
     <div className='bg-slate-50 p-4 h-screen'>
       <h2 className='font-black text-4xl '>Things & Stuff Store</h2>
-      <p className='font-medium text-lg mt-4'>The Things and Stuff Store sells a lot of things (and some stuff) at bargin prices!</p>
+      <p className='font-medium text-lg mt-4'>The Things and Stuff Store sells a lot of things (and some stuff) at bargain prices!</p>
     </div>
   )
 }
