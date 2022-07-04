@@ -4,7 +4,7 @@ import Item from '../components/Item'
 export default function Home() {
 
   return (
-    <div className='bg-slate-50 min-h-[90vh] h-full'>
+    <div className='bg-zinc-50 min-h-[85vh] h-full'>
       <Item />
     </div>
   )

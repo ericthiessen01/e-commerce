@@ -26,9 +26,9 @@ export default function Item() {
   const productsHtml = storeItems.map(obj => {
     if(filterCategory === obj.category) {
       return(
-        <div key={obj.id} className='w-5/6 bg-white p-4 m-4 grid grid-cols-5 ' >
+        <div key={obj.id} className='w-5/6 bg-white p-4 m-4 grid grid-cols-5 shadow' >
           <img src={obj.image} alt={obj.title} className='p-3 max-h-64 self-center justify-self-center col-span-1'/>
-          <div className='col-start-2 flex flex-col justify-between m-1' >
+          <div className='col-start-2 col-span-2 xl:col-span-1 flex flex-col justify-between m-1' >
             <div>
               <h2 className='font-bold text-left text-lg'>{obj.title}</h2>
               <p className='text-left'>⭐{obj.rating.rate}/5 ({obj.rating.count})</p>
@@ -45,13 +45,16 @@ export default function Item() {
               }
             </div>
           </div>
-          <p className='col-start-3 col-span-3 m-1'>{obj.description}</p>
+          <div className='col-start-4 col-span-2 xl:col-start-3 xl:col-span-3'>
+            <h3 className='font-medium text-base lg:text-lg'>Description</h3>
+            <p className=' m-1 text-xs md:text-sm xl:text-base'>{obj.description}</p>
+          </div>
         </div>
       )} if(!filterCategory) {
         return(
-          <div key={obj.id} className='w-5/6 bg-white p-4 m-4 grid grid-cols-5 ' >
+          <div key={obj.id} className='w-5/6 bg-white p-4 m-4 grid grid-cols-5 shadow' >
             <img src={obj.image} alt={obj.title} className='p-3 max-h-64 self-center justify-self-center col-span-1'/>
-            <div className='col-start-2 flex flex-col justify-between m-1' >
+            <div className='col-start-2 col-span-2 xl:col-span-1 flex flex-col justify-between m-1' >
               <div>
                 <h2 className='font-bold text-left text-lg'>{obj.title}</h2>
                 <p className='text-left'>⭐{obj.rating.rate}/5 ({obj.rating.count})</p>
@@ -68,14 +71,17 @@ export default function Item() {
                 }
               </div>
             </div>
-            <p className='col-start-3 col-span-3 m-1'>{obj.description}</p>
+            <div className='col-start-4 col-span-2 xl:col-start-3 xl:col-span-3'>
+              <h3 className='font-medium text-base lg:text-lg'>Description</h3>
+              <p className=' m-1 text-xs md:text-sm xl:text-base'>{obj.description}</p>
+            </div>
           </div>
         )
       }
   })
 
   return (
-    <div className='bg-slate-50 p-4'>
+    <div className='bg-zinc-50 p-4'>
       <div className='flex justify-between items-center pl-4 pr-4'>
         <h2 className='font-black text-4xl '>Things & Stuff Store</h2>
         <div>
