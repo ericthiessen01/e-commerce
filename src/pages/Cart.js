@@ -22,7 +22,9 @@ export default function Checkout() {
         {totalCartItems > 0 ? 
         <div className='flex flex-col items-center w-10/12 mx-auto'>
           <CartItem />
-          <h2 className='font-bold text-xl'>TOTAL: {totalPrice}</h2>
+          <div className='self-end m-4'>
+            <h2 className='font-bold text-2xl mb-4'>TOTAL: {totalPrice}</h2>
+          </div>
         </div> :
         <div>
           <p className='p-4 font-bold text-2xl'>No items in cart</p>
